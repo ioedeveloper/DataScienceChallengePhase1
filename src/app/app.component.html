@@ -1,20 +1,276 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span></button>
+      <a class="navbar-brand" href="#"><span>DATA SCIENCE </span>CHALLENGE</a>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+  
+<div class="col-sm-12 main">
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Phase 2 Readiness</h1>
+    </div>
+  </div><!--/.row-->
+  
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body easypiechart-panel">
+          <div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body easypiechart-panel">
+          <div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body easypiechart-panel">
+          <div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body easypiechart-panel">
+          <div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span></div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.row-->
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Line Chart
+          <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+              <em class="fa fa-cogs"></em>
+            </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <ul class="dropdown-settings">
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 1
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 2
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 3
+                    </a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body">
+          <div class="canvas-wrapper">
+            <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.row-->
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Bar Chart
+          <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+              <em class="fa fa-cogs"></em>
+            </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <ul class="dropdown-settings">
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 1
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 2
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 3
+                    </a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body">
+          <div class="canvas-wrapper">
+            <canvas class="main-chart" id="bar-chart" height="200" width="600"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.row-->		
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Pie Chart
+          <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+              <em class="fa fa-cogs"></em>
+            </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <ul class="dropdown-settings">
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 1
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 2
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 3
+                    </a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body">
+          <div class="canvas-wrapper">
+            <canvas class="chart" id="pie-chart" ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Doughnut Chart
+          <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+              <em class="fa fa-cogs"></em>
+            </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <ul class="dropdown-settings">
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 1
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 2
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 3
+                    </a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body">
+          <div class="canvas-wrapper">
+            <canvas class="chart" id="doughnut-chart" ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.row-->
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Radar Chart
+          <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+              <em class="fa fa-cogs"></em>
+            </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <ul class="dropdown-settings">
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 1
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 2
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 3
+                    </a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body">
+          <div class="canvas-wrapper">
+            <canvas class="chart" id="radar-chart" ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Polar Area Chart
+          <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+              <em class="fa fa-cogs"></em>
+            </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <ul class="dropdown-settings">
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 1
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 2
+                    </a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">
+                      <em class="fa fa-cog"></em> Settings 3
+                    </a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body">
+          <div class="canvas-wrapper">
+            <canvas class="chart" id="polar-area-chart" ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <p class="back-link"><i class="fa fa-heart"></i> <a href="#">  Data Scholars</a></p>
+    </div>
+  </div><!--/.row-->
+</div>	<!--/.main-->
