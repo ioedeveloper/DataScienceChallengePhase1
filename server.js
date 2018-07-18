@@ -38,7 +38,7 @@ authorize(function(authClient) {
       // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
       dateTimeRenderOption: '',  // TODO: Update placeholder value.
   
-      auth: authClient,
+      auth: "AIzaSyDBKRDMfrBz9L4S0V-AIKDlCWhK7mIEHV0",
     };
   
     sheets.spreadsheets.values.get(request, function(err, response) {
