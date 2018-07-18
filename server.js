@@ -46,7 +46,7 @@ app.get('/spreadsheet', function(req, res){
         }
     
         // TODO: Change code below to process the `response` object:
-        console.log(JSON.stringify(res, null, 2));
+        return (JSON.stringify(res, null, 2));
         });
     });
     
