@@ -62,7 +62,7 @@ authorize(function(authClient) {
     //   'https://www.googleapis.com/auth/drive.readonly'
     //   'https://www.googleapis.com/auth/spreadsheets'
     //   'https://www.googleapis.com/auth/spreadsheets.readonly'
-    var authClient = 'https://www.googleapis.com/auth/spreadsheets';
+    var authClient = 'AIzaSyDBKRDMfrBz9L4S0V-AIKDlCWhK7mIEHV0';
   
     if (authClient == null) {
       console.log('authentication failed');
