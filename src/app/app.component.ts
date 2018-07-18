@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ExcelService } from './excel.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(private spreadsheet: ExcelService) {
+    this.getData();
+  }
+
+  getData() {
+    this.spreadsheet.getGoogleSpreadsheet().subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
