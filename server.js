@@ -36,7 +36,7 @@ app.get('/spreadsheet', function(req, res){
         // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
         dateTimeRenderOption: '',  // TODO: Update placeholder value.
     
-        auth: "AIzaSyDBKRDMfrBz9L4S0V-AIKDlCWhK7mIEHV0",
+        auth: "apiKey",
         };
     
         sheets.spreadsheets.values.get(req, function(err, res) {
