@@ -36,7 +36,7 @@ app.get('/spreadsheet', function(req, res){
         // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
         dateTimeRenderOption: '',  // TODO: Update placeholder value.
     
-        auth: "apiKey",
+        auth: authClient,
         };
     
         sheets.spreadsheets.values.get(req, function(err, res) {
@@ -60,7 +60,7 @@ app.get('/spreadsheet', function(req, res){
         //   'https://www.googleapis.com/auth/drive.readonly'
         //   'https://www.googleapis.com/auth/spreadsheets'
         //   'https://www.googleapis.com/auth/spreadsheets.readonly'
-        var authClient = 'AIzaSyDBKRDMfrBz9L4S0V-AIKDlCWhK7mIEHV0';
+        var authClient = 'https://www.googleapis.com/auth/spreadsheets';
     
         if (authClient == null) {
         console.log('authentication failed');
