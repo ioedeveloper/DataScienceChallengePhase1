@@ -9,12 +9,5 @@ import { ExcelService } from './excel.service';
 export class AppComponent {
   title = 'app';
   constructor(private spreadsheet: ExcelService) {
-    this.getData();
-  }
-
-  getData() {
-    this.spreadsheet.getGoogleSpreadsheet().subscribe((data) => {
-      console.log(data);
-    });
   }
 }
