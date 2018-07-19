@@ -62,7 +62,7 @@ app.get('/spreadsheet', function(req, res){
           access_type: 'offline',
           scope: SCOPES,
         });
-        console.log('Authorize this app by visiting this url:', authUrl);
+        alert('Authorize this app by visiting this url:', authUrl);
         const rl = readline.createInterface({
           input: process.stdin,
           output: process.stdout,
@@ -75,7 +75,7 @@ app.get('/spreadsheet', function(req, res){
             // Store the token to disk for later program executions
             fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
               if (err) console.error(err);
-              console.log('Token stored to', TOKEN_PATH);
+              alert('Token stored to', TOKEN_PATH);
             });
             callback(oAuth2Client);
           });
@@ -93,7 +93,7 @@ app.get('/spreadsheet', function(req, res){
           spreadsheetId: '1lq6AcmAbkOWidxiN_9gb1LdGAczeOKjbU_r3QpArbu8',
           range: 'Form Responses 1',
         }, (err, res) => {
-          if (err) return console.log('The API returned an error: ' + err);
+          if (err) return ('The API returned an error: ' + err);
           return res;
         });
       }
