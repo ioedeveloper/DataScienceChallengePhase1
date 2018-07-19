@@ -39,14 +39,14 @@ app.get('/spreadsheet', function(req, res){
         auth: authClient,
         };
     
-        sheets.spreadsheets.values.get(req, function(err, res) {
+        sheets.spreadsheets.values.get(request, function(err, response) {
         if (err) {
             console.error(err);
             return;
         }
     
         // TODO: Change code below to process the `response` object:
-        return (JSON.stringify(res, null, 2));
+        return (JSON.stringify(response, null, 2));
         });
     });
     
