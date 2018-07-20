@@ -30,15 +30,51 @@
   <script src="assets/js/easypiechart-data.js"></script>
   <script src="assets/js/bootstrap-datepicker.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script>
-      var xmlhttp = new XMLHttpRequest();
-      var url = "https://sheets.googleapis.com/v4/spreadsheets/1lq6AcmAbkOWidxiN_9gb1LdGAczeOKjbU_r3QpArbu8/values/Form%20Responses%201?key=AIzaSyDBKRDMfrBz9L4S0V-AIKDlCWhK7mIEHV0"
-      xmlhttp.open("GET", url, true);
-      xmlhttp.send();
-</script>
 
   <script>
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
   window.onload = function () {
+
+    //Make ajax request to fetch analyzed data.
+    var xhttp = new XMLHttpRequest();
+      var url = "https://sheets.googleapis.com/v4/spreadsheets/1lq6AcmAbkOWidxiN_9gb1LdGAczeOKjbU_r3QpArbu8/values/Analysis?key=AIzaSyDBKRDMfrBz9L4S0V-AIKDlCWhK7mIEHV0";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          let analysis = JSON.parse(this.responseText);
+          console.log(analysis);
+          $("#countresponses").html(analysis.values[0][2]);
+          $("#countcountries").html(analysis.values[1][2]);
+          let total = parseInt(analysis.values[2][2]) + parseInt(analysis.values[3][2]) + parseInt(analysis.values[4][2]) + parseInt(analysis.values[5][2]) + parseInt(analysis.values[6][2]) + parseInt(analysis.values[7][2]) + parseInt(analysis.values[8][2]) + parseInt(analysis.values[9][2]);
+          let listvalues = [(parseInt(analysis.values[2][2])/total)*100, (parseInt(analysis.values[3][2])/total)*100, (parseInt(analysis.values[4][2])/total)*100,(parseInt(analysis.values[5][2])/total)*100,(parseInt(analysis.values[6][2])/total)*100,(parseInt(analysis.values[7][2])/total)*100,(parseInt(analysis.values[8][2])/total)*100,(parseInt(analysis.values[9][2])/total)*100];
+          let pieData = [];
+          let count = 2;
+          for(let val in listvalues){
+            let option = {
+              value: Math.round(listvalues[val]),
+              color:getRandomColor(),
+              highlight: getRandomColor(),
+              label: analysis.values[count][0]
+            }
+            pieData.push(option);
+            count++;
+          };
+          let chart4 = document.getElementById("pie-chart").getContext("2d");
+            window.myPie = new Chart(chart4).Pie(pieData, {
+            responsive: true,
+            segmentShowStroke: true
+          });
+        }
+      };
+      xhttp.open("GET", url, true);
+      xhttp.send();
   var chart1 = document.getElementById("line-chart").getContext("2d");
   window.myLine = new Chart(chart1).Line(lineChartData, {
   responsive: true,
@@ -52,28 +88,6 @@
   scaleLineColor: "rgba(0,0,0,.2)",
   scaleGridLineColor: "rgba(0,0,0,.05)",
   scaleFontColor: "#c5c7cc"
-  });
-  var chart3 = document.getElementById("doughnut-chart").getContext("2d");
-  window.myDoughnut = new Chart(chart3).Doughnut(doughnutData, {
-  responsive: true,
-  segmentShowStroke: false
-  });
-  var chart4 = document.getElementById("pie-chart").getContext("2d");
-  window.myPie = new Chart(chart4).Pie(pieData, {
-  responsive: true,
-  segmentShowStroke: false
-  });
-  var chart5 = document.getElementById("radar-chart").getContext("2d");
-  window.myRadarChart = new Chart(chart5).Radar(radarData, {
-  responsive: true,
-  scaleLineColor: "rgba(0,0,0,.05)",
-  angleLineColor: "rgba(0,0,0,.2)"
-  });
-  var chart6 = document.getElementById("polar-area-chart").getContext("2d");
-  window.myPolarAreaChart = new Chart(chart6).PolarArea(polarData, {
-  responsive: true,
-  scaleLineColor: "rgba(0,0,0,.2)",
-  segmentShowStroke: false
   });
   };
   </script>	
