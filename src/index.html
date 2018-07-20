@@ -57,13 +57,17 @@
           let pieData = [];
           let count = 2;
           for(let val in listvalues){
+            let color = getRandomColor()
             let option = {
               value: Math.round(listvalues[val]),
-              color:getRandomColor(),
-              highlight: getRandomColor(),
+              color:color,
+              highlight: color,
               label: analysis.values[count][0]
             }
             pieData.push(option);
+            $("#keys").append(`<div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <i class="fa fa-square" style="color:`+color+`"></i><span> `+analysis.values[count][0]+`</span>
+                              </div>`);
             count++;
           };
           let chart4 = document.getElementById("pie-chart").getContext("2d");
