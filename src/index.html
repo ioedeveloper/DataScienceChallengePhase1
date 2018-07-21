@@ -89,14 +89,12 @@
           let responses = JSON.parse(this.responseText);
           console.log(responses);
           // get responses
-          let slackresponse = [], forumresponse = [], coursecompletion = [];
           let sumslackage18 = 0, sumslackage23 = 0, sumslackage28 = 0, sumslackage33 = 0, sumslackage38 = 0, sumslackage43 = 0, sumslackage48 = 0, sumslackage53 = 0;
           let forumslackage18 = 0, forumslackage23 = 0, forumslackage28 = 0, forumslackage33 = 0, forumslackage38 = 0, forumslackage43 = 0, forumslackage48 = 0, forumslackage53 = 0;
           let courseslackage18 = 0, courseslackage23 = 0, courseslackage28 = 0, courseslackage33 = 0, courseslackage38 = 0, courseslackage43 = 0, courseslackage48 = 0, courseslackage53 = 0;
+          let totalslack = 0, totalforum = 0, totalcourse = 0;
+
           for(let i in responses.values){
-            slackresponse.push(responses.values[i][6]);
-            forumresponse.push(responses.values[i][5]);
-            coursecompletion.push(responses.values[i][4]);
             if(responses.values[i][9] == "18 - 22 years"){
               sumslackage18 += parseInt(responses.values[i][6]);
               forumslackage18 += parseInt(responses.values[i][5]);
@@ -135,6 +133,11 @@
         let sumslack = [sumslackage18, sumslackage23, sumslackage28, sumslackage33, sumslackage38, sumslackage43, sumslackage48, sumslackage53];
         let sumforum = [forumslackage18, forumslackage23, forumslackage28, forumslackage33, forumslackage38, forumslackage43, forumslackage48, forumslackage53];
         let sumcourse = [courseslackage18, courseslackage23, courseslackage28, courseslackage33, courseslackage38, courseslackage43, courseslackage48, courseslackage53];
+        
+        totalslack = sumslack.reduce((a, b) => a + b, 0);
+        totalforum = sumforum.reduce((a, b) => a + b, 0);
+        totalcourse = sumcourse.reduce((a, b) => a + b, 0);
+
         let lineChartData = {
           labels : ["18-22 yrs","23-27 yrs","28-32 yrs","33-37 yrs","38-42 yrs","43-47 yrs","48-52 yrs","53-above yrs"],
           datasets : [
@@ -185,18 +188,38 @@
                               </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               <i class="fa fa-square" style="color:rgba(48, 164, 255, 0.75)"></i><span> Course Completion</span>
                               </div>`);
+      var radarData = {
+	    labels: ["Slack", "Forum", "Course Completion"],
+        datasets: [
+            {
+              label: "My First dataset",
+              fillColor : "rgba(48, 164, 255, 0.2)",
+	            strokeColor : "rgba(48, 164, 255, 0.8)",
+	            pointColor : "rgba(48, 164, 255, 1)",
+	            pointStrokeColor : "#fff",
+	            pointHighlightFill : "#fff",
+	            pointHighlightStroke : "rgba(48, 164, 255, 1)",
+              data: [totalslack, totalforum, totalcourse]
+            }
+          ]
+        };
+        var chart5 = document.getElementById("radar-chart").getContext("2d");
+        window.myRadarChart = new Chart(chart5).Radar(radarData, {
+        responsive: true,
+        scaleLineColor: "rgba(0,0,0,.05)",
+        angleLineColor: "rgba(0,0,0,.2)"
+      });
       }
     }
       xhttp.open("GET", url, true);
       xhttp.send();
-
-      var chart2 = document.getElementById("bar-chart").getContext("2d");
-      window.myBar = new Chart(chart2).Bar(barChartData, {
-      responsive: true,
-      scaleLineColor: "rgba(0,0,0,.2)",
-      scaleGridLineColor: "rgba(0,0,0,.05)",
-      scaleFontColor: "#c5c7cc"
-      });
+      // var chart2 = document.getElementById("bar-chart").getContext("2d");
+      // window.myBar = new Chart(chart2).Bar(barChartData, {
+      // responsive: true,
+      // scaleLineColor: "rgba(0,0,0,.2)",
+      // scaleGridLineColor: "rgba(0,0,0,.05)",
+      // scaleFontColor: "#c5c7cc"
+      // });
       };
     </script>	
   </body>

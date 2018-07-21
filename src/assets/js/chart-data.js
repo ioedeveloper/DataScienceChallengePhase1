@@ -48,32 +48,6 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 				}
 
 			];
-			
-	var radarData = {
-	    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-	    datasets: [
-	        {
-	            label: "My First dataset",
-	            fillColor: "rgba(220,220,220,0.2)",
-	            strokeColor: "rgba(220,220,220,1)",
-	            pointColor: "rgba(220,220,220,1)",
-	            pointStrokeColor: "#fff",
-	            pointHighlightFill: "#fff",
-	            pointHighlightStroke: "rgba(220,220,220,1)",
-	            data: [65, 59, 90, 81, 56, 55, 40]
-	        },
-	        {
-	            label: "My Second dataset",
-	            fillColor : "rgba(48, 164, 255, 0.2)",
-	            strokeColor : "rgba(48, 164, 255, 0.8)",
-	            pointColor : "rgba(48, 164, 255, 1)",
-	            pointStrokeColor : "#fff",
-	            pointHighlightFill : "#fff",
-	            pointHighlightStroke : "rgba(48, 164, 255, 1)",
-	            data: [28, 48, 40, 19, 96, 27, 100]
-	        }
-	    ]
-	};
 	
 	var polarData = [
 		    {
