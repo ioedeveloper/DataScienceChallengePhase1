@@ -192,22 +192,53 @@
             }
           // get sum of responses by age
         }
-        let sumslack = [(Math.round(((((sumslackage18/count18)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((sumslackage23/count23)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((sumslackage28/count28)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((sumslackage33/count33)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((sumslackage38/count38)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((sumslackage43/count43)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((sumslackage48/count48)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((sumslackage53/count53)/countresponses)*100) + 0.00001)*100) / 100)];
-        let sumforum = [(Math.round(((((forumslackage18/count18)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((forumslackage23/count23)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((forumslackage28/count28)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((forumslackage33/count33)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((forumslackage38/count38)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((forumslackage43/count43)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((forumslackage48/count48)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((forumslackage53/count53)/countresponses)*100) + 0.00001)*100) / 100)];
-        let sumcourse = [(Math.round(((((courseslackage18/count18)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((courseslackage23/count23)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((courseslackage28/count28)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((courseslackage33/count33)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((courseslackage38/count38)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((courseslackage43/count43)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((courseslackage48/count48)/countresponses)*100) + 0.00001)*100) / 100), (Math.round(((((courseslackage53/count53)/countresponses)*100) + 0.00001)*100) / 100)];
 
         let tsumslack = [sumslackage18, sumslackage23, sumslackage28, sumslackage33, sumslackage38, sumslackage43, sumslackage48, sumslackage53];
         let tsumforum = [forumslackage18, forumslackage23, forumslackage28, forumslackage33, forumslackage38, forumslackage43, forumslackage48, forumslackage53];
         let tsumcourse = [courseslackage18, courseslackage23, courseslackage28, courseslackage33, courseslackage38, courseslackage43, courseslackage48, courseslackage53];
         totalslack = tsumslack.reduce((a, b) => a + b, 0);
+        stslack = totalslack;
         totalslack = totalslack/countresponses;
         totalslack = Math.round((totalslack + 0.00001) * 100) / 100
         totalforum = tsumforum.reduce((a, b) => a + b, 0);
+        stforum = totalforum;
         totalforum = totalforum/countresponses;
         totalforum = Math.round((totalforum + 0.00001) * 100) / 100
         totalcourse = tsumcourse.reduce((a, b) => a + b, 0);
+        stcourse = totalcourse;
         totalcourse = totalcourse/countresponses;
         totalcourse = Math.round((totalcourse + 0.00001) * 100) / 100
+
+        let sumslack = [
+          (Math.round((((sumslackage18/stslack)*100) + 0.00001)*100) / 100), 
+          (Math.round((((sumslackage23/stslack)*100) + 0.00001)*100) / 100), 
+          (Math.round((((sumslackage28/stslack)*100) + 0.00001)*100) / 100), 
+          (Math.round((((sumslackage33/stslack)*100) + 0.00001)*100) / 100), 
+          (Math.round((((sumslackage38/stslack)*100) + 0.00001)*100) / 100), 
+          (Math.round((((sumslackage43/stslack)*100) + 0.00001)*100) / 100), 
+          (Math.round((((sumslackage48/stslack)*100) + 0.00001)*100) / 100), 
+          (Math.round((((sumslackage53/stslack)*100) + 0.00001)*100) / 100)
+        ];
+        let sumforum = [
+          (Math.round((((forumslackage18/stforum)*100) + 0.00001)*100) / 100), 
+          (Math.round((((forumslackage23/stforum)*100) + 0.00001)*100) / 100), 
+          (Math.round((((forumslackage28/stforum)*100) + 0.00001)*100) / 100), 
+          (Math.round((((forumslackage33/stforum)*100) + 0.00001)*100) / 100), 
+          (Math.round((((forumslackage38/stforum)*100) + 0.00001)*100) / 100), 
+          (Math.round((((forumslackage43/stforum)*100) + 0.00001)*100) / 100), 
+          (Math.round((((forumslackage48/stforum)*100) + 0.00001)*100) / 100), 
+          (Math.round((((forumslackage53/stforum)*100) + 0.00001)*100) / 100)
+        ];
+        let sumcourse = [
+          (Math.round((((courseslackage18/stcourse)*100) + 0.00001)*100) / 100), 
+          (Math.round((((courseslackage23/stcourse)*100) + 0.00001)*100) / 100), 
+          (Math.round((((courseslackage28/stcourse)*100) + 0.00001)*100) / 100), 
+          (Math.round((((courseslackage33/stcourse)*100) + 0.00001)*100) / 100), 
+          (Math.round((((courseslackage38/stcourse)*100) + 0.00001)*100) / 100), 
+          (Math.round((((courseslackage43/stcourse)*100) + 0.00001)*100) / 100), 
+          (Math.round((((courseslackage48/stcourse)*100) + 0.00001)*100) / 100), 
+          (Math.round((((courseslackage53/stcourse)*100) + 0.00001)*100) / 100)
+          ];
 
         let lineChartData = {
           labels : ["18-22 yrs","23-27 yrs","28-32 yrs","33-37 yrs","38-42 yrs","43-47 yrs","48-52 yrs","53-above yrs"],
