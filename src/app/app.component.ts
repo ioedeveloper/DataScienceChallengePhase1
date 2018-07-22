@@ -24,6 +24,7 @@ export class AppComponent {
         if (values[i][3] === nickname) {
           // tslint:disable-next-line:radix
           score = parseInt(values[i][6]) + parseInt(values[i][5]) + parseInt(values[i][4]);
+          this.msgNo = 1;
         }
       }
       if (score === 0) {
