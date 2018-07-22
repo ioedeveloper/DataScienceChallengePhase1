@@ -189,10 +189,13 @@
         
         totalslack = sumslack.reduce((a, b) => a + b, 0);
         totalslack = totalslack/countresponses;
+        totalslack = Math.round((totalslack + 0.00001) * 100) / 100
         totalforum = sumforum.reduce((a, b) => a + b, 0);
         totalforum = totalforum/countresponses;
+        totalforum = Math.round((totalforum + 0.00001) * 100) / 100
         totalcourse = sumcourse.reduce((a, b) => a + b, 0);
         totalcourse = totalcourse/countresponses;
+        totalcourse = Math.round((totalcourse + 0.00001) * 100) / 100
 
         let lineChartData = {
           labels : ["18-22 yrs","23-27 yrs","28-32 yrs","33-37 yrs","38-42 yrs","43-47 yrs","48-52 yrs","53-above yrs"],
