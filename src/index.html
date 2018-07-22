@@ -240,7 +240,7 @@
           (Math.round((((courseslackage53/stcourse)*100) + 0.00001)*100) / 100)
           ];
 
-        let lineChartData = {
+        let barChartData = {
           labels : ["18-22 yrs","23-27 yrs","28-32 yrs","33-37 yrs","38-42 yrs","43-47 yrs","48-52 yrs","53-above yrs"],
           datasets : [
             {
@@ -276,13 +276,14 @@
           ]
         };
         //Plot Chart
-        var chart1 = document.getElementById("line-chart").getContext("2d");
-        window.myLine = new Chart(chart1).Line(lineChartData, {
+        var chart1 = document.getElementById("bar-chart").getContext("2d");
+        window.myBar = new Chart(chart1).Bar(barChartData, {
           responsive: true,
           scaleLineColor: "rgba(0,0,0,.2)",
           scaleGridLineColor: "rgba(0,0,0,.05)",
           scaleFontColor: "#c5c7cc"
         });
+
         $("#keys-age").append(`<div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               <i class="fa fa-square" style="color:rgba(169,21,7,0.5)"></i><span> Slack</span>
                               </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
