@@ -310,6 +310,11 @@
                               <i class="fa fa-square" style="color:rgba(112,8,178,1)"></i><span> Forum</span>
                               </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               <i class="fa fa-square" style="color:rgba(48, 164, 255, 0.75)"></i><span> Course Completion</span>
+                              </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <span> X-axis: age-range(yrs)</span> 
+                              </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <span> Y-axis: ratings(%)</span>
+                              </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               </div>`);
 
         let totalsumratingslack = sumratingslack1 + sumratingslack2 + sumratingslack3 + sumratingslack4 + sumratingslack5;
@@ -515,6 +520,18 @@ let ratinglineChartData = {
           scaleGridLineColor: "rgba(0,0,0,.05)",
           scaleFontColor: "#c5c7cc"
         });
+
+        $("#keys-country").append(`<div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <i class="fa fa-square" style="color:rgba(169,21,7,0.5)"></i><span> Slack</span>
+                              </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <i class="fa fa-square" style="color:rgba(112,8,178,1)"></i><span> Forum</span>
+                              </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <i class="fa fa-square" style="color:rgba(48, 164, 255, 0.75)"></i><span> Course Completion</span>
+                              </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <span> X-axis: country</span> 
+                              </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <span> Y-axis: ratings(%)</span>
+                              </div>`);
       }
     }
       xhttp.open("GET", url, true);
