@@ -93,8 +93,60 @@
           let forumslackage18 = 0, forumslackage23 = 0, forumslackage28 = 0, forumslackage33 = 0, forumslackage38 = 0, forumslackage43 = 0, forumslackage48 = 0, forumslackage53 = 0;
           let courseslackage18 = 0, courseslackage23 = 0, courseslackage28 = 0, courseslackage33 = 0, courseslackage38 = 0, courseslackage43 = 0, courseslackage48 = 0, courseslackage53 = 0;
           let totalslack = 0, totalforum = 0, totalcourse = 0;
+          let sumratingslack1 = 0, sumratingslack2 = 0, sumratingslack3 = 0, sumratingslack4 = 0, sumratingslack5 = 0;
+          let sumratingforum1 = 0, sumratingforum2 = 0, sumratingforum3 = 0, sumratingforum4 = 0, sumratingforum5 = 0;
+          let sumratingcourse1 = 0, sumratingcourse2 = 0, sumratingcourse3 = 0, sumratingcourse4 = 0, sumratingcourse5 = 0, sumratingcourse6 = 0, sumratingcourse7 = 0, sumratingcourse8 = 0, sumratingcourse9 = 0, sumratingcourse10 = 0;
 
           for(let i in responses.values){
+            // slack rating
+            if(responses.values[i][6] == "1"){
+              sumratingslack1++;
+            }else if(responses.values[i][6] == "2"){
+              sumratingslack2++;
+            }else if(responses.values[i][6] == "3"){
+              sumratingslack3++;
+            }else if(responses.values[i][6] == "4"){
+              sumratingslack4++;
+            }else if(responses.values[i][6] == "5"){
+              sumratingslack5++;
+            }
+
+            // forum rating
+            if(responses.values[i][5] == "1"){
+              sumratingforum1++;
+            }else if(responses.values[i][5] == "2"){
+              sumratingforum2++;
+            }else if(responses.values[i][5] == "3"){
+              sumratingforum3++;
+            }else if(responses.values[i][5] == "4"){
+              sumratingforum4++;
+            }else if(responses.values[i][5] == "5"){
+              sumratingforum5++;
+            }
+
+            // course rating
+            if(responses.values[i][4] == "1"){
+              sumratingcourse1++;
+            }else if(responses.values[i][4] == "2"){
+              sumratingcourse2++;
+            }else if(responses.values[i][4] == "3"){
+              sumratingcourse3++;
+            }else if(responses.values[i][4] == "4"){
+              sumratingcourse4++;
+            }else if(responses.values[i][4] == "5"){
+              sumratingcourse5++;
+            }else if(responses.values[i][4] == "6"){
+              sumratingcourse6++;
+            }else if(responses.values[i][4] == "7"){
+              sumratingcourse7++;
+            }else if(responses.values[i][4] == "8"){
+              sumratingcourse8++;
+            }else if(responses.values[i][4] == "9"){
+              sumratingcourse9++;
+            }else if(responses.values[i][4] == "10"){
+              sumratingcourse10++;
+            }
+
             if(responses.values[i][9] == "18 - 22 years"){
               sumslackage18 += parseInt(responses.values[i][6]);
               forumslackage18 += parseInt(responses.values[i][5]);
@@ -187,6 +239,62 @@
                               <i class="fa fa-square" style="color:rgba(112,8,178,1)"></i><span> Forum</span>
                               </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               <i class="fa fa-square" style="color:rgba(48, 164, 255, 0.75)"></i><span> Course Completion</span>
+                              </div>`);
+        let countslack = [sumratingslack1, sumratingslack2, sumratingslack3, sumratingslack4, sumratingslack5];
+        let countforum = [sumratingforum1, sumratingforum2, sumratingforum3, sumratingforum4, sumratingforum5];
+        let countcourse = [sumratingcourse1, sumratingcourse2, sumratingcourse3, sumratingcourse4, sumratingcourse5, sumratingcourse6, sumratingcourse7, sumratingcourse8, sumratingcourse9, sumratingcourse10];
+
+let ratinglineChartData = {
+          labels : ["1","2","3","4","5","6","7","8","9","10"],
+          datasets : [
+            {
+              label: "Slack",
+              fillColor : "rgba(169,21,7,0.5)",
+              strokeColor : "rgba(220,220,220,1)",
+              pointColor : "rgba(169,21,7,0.5)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(169,21,7,0.5)",
+              data : countslack
+            },
+            {
+              label: "Forum",
+              fillColor : "rgba(181,137,241,0.4)",
+              strokeColor : "rgba(112,8,178,1)",
+              pointColor : "rgba(112,8,178,1)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(112,8,178,1)",
+              data : countforum
+            },
+            {
+              label: "Course Completion",
+              fillColor : "rgba(48, 164, 255, 0.2)",
+              strokeColor : "rgba(48, 164, 255, 0.8)",
+              pointColor : "rgba(48, 164, 255, 0.75)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(48, 164, 255, 0.75)",
+              data : countcourse
+            }
+          ]
+        };
+      //Ratings Chart
+      var ratingchart1 = document.getElementById("rating-line-chart").getContext("2d");
+        window.myLine = new Chart(ratingchart1).Line(ratinglineChartData, {
+          responsive: true,
+          scaleLineColor: "rgba(0,0,0,.2)",
+          scaleGridLineColor: "rgba(0,0,0,.05)",
+          scaleFontColor: "#c5c7cc"
+        });
+        $("#keys-ratings").append(`<div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <i class="fa fa-square" style="color:rgba(169,21,7,0.5)"></i><span> Slack</span>
+                              </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <i class="fa fa-square" style="color:rgba(112,8,178,1)"></i><span> Forum</span>
+                              </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <i class="fa fa-square" style="color:rgba(48, 164, 255, 0.75)"></i><span> Course Completion</span>
+                              </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <span> x-axis: Ratings</span><span> y-axis: Frequency</span>
                               </div>`);
       var radarData = {
 	    labels: ["Slack", "Forum", "Course Completion"],
