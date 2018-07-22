@@ -100,17 +100,23 @@
           let sumratingforum1 = 0, sumratingforum2 = 0, sumratingforum3 = 0, sumratingforum4 = 0, sumratingforum5 = 0;
           let sumratingcourse1 = 0, sumratingcourse2 = 0, sumratingcourse3 = 0, sumratingcourse4 = 0, sumratingcourse5 = 0, sumratingcourse6 = 0, sumratingcourse7 = 0, sumratingcourse8 = 0, sumratingcourse9 = 0, sumratingcourse10 = 0;
           let count18 = 0, count23 = 0, count28 = 0, count33 = 0, count38 = 0, count43 = 0, count48 = 0, count53 = 0;
-          let countries = [];
-          let countcountry = [];
+          let countries = [], countcountry = [], countcountryslack = [], countcountryforum = [], countcountrycourse = [];
+
 
           for(let i in responses.values){
 
             if(countries.includes(responses.values[i][8])){
               let index = countries.indexOf(responses.values[i][8]);
               countcountry[index]++;
+              countcountryslack[index] += parseInt(responses.values[i][6]);
+              countcountryforum[index] += parseInt(responses.values[i][5]);
+              countcountrycourse[index] += parseInt(responses.values[i][4]);
             }else{
               countries.push(responses.values[i][8]);
               countcountry[countries.length - 1] = 1;
+              countcountryslack[countries.length - 1] = parseInt(responses.values[i][6]);
+              countcountryforum[countries.length - 1] = parseInt(responses.values[i][5]);
+              countcountrycourse[countries.length - 1] = parseInt(responses.values[i][4]);
             }
             // slack rating
             if(responses.values[i][6] == "1"){
@@ -444,6 +450,56 @@ let ratinglineChartData = {
             responsive: true,
             segmentShowStroke: true,
          });
+
+        
+
+         countries.shift();
+         countcountryslack.shift();
+         countcountryforum.shift();
+         countcountrycourse.shift();
+         let barChartData1 = {
+          labels : countries,
+          datasets : [
+            {
+              label: "Slack",
+              fillColor : "rgba(169,21,7,0.5)",
+              strokeColor : "rgba(220,220,220,1)",
+              pointColor : "rgba(169,21,7,0.5)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(169,21,7,0.5)",
+              data : countcountryslack
+            },
+            {
+              label: "Forum",
+              fillColor : "rgba(181,137,241,0.4)",
+              strokeColor : "rgba(112,8,178,1)",
+              pointColor : "rgba(112,8,178,1)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(112,8,178,1)",
+              data : countcountryforum
+            },
+            {
+              label: "Course Completion",
+              fillColor : "rgba(48, 164, 255, 0.2)",
+              strokeColor : "rgba(48, 164, 255, 0.8)",
+              pointColor : "rgba(48, 164, 255, 0.75)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(48, 164, 255, 0.75)",
+              data : countcountrycourse
+            }
+          ]
+        };
+        //Plot Chart
+        var chart7 = document.getElementById("bar-chart2").getContext("2d");
+        window.myBar = new Chart(chart7).Bar(barChartData1, {
+          responsive: true,
+          scaleLineColor: "rgba(0,0,0,.2)",
+          scaleGridLineColor: "rgba(0,0,0,.05)",
+          scaleFontColor: "#c5c7cc"
+        });
       }
     }
       xhttp.open("GET", url, true);
