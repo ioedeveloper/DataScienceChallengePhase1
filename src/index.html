@@ -43,6 +43,7 @@
 
   window.onload = function () {
     var countresponses = 0;
+    var totalcountries = 0;
     //Make ajax request to fetch analyzed data.
     var xhttp = new XMLHttpRequest();
       var url = "https://sheets.googleapis.com/v4/spreadsheets/1lq6AcmAbkOWidxiN_9gb1LdGAczeOKjbU_r3QpArbu8/values/Analysis?key=AIzaSyDBKRDMfrBz9L4S0V-AIKDlCWhK7mIEHV0";
@@ -52,8 +53,9 @@
           let analysis = JSON.parse(this.responseText);
           // Compute and display data
           countresponses = analysis.values[0][2];
+          totalcountries = analysis.values[1][2];
           $("#countresponses").html(countresponses);
-          $("#countcountries").html(analysis.values[1][2]);
+          $("#countcountries").html(totalcountries);
           let total = parseInt(analysis.values[2][2]) + parseInt(analysis.values[3][2]) + parseInt(analysis.values[4][2]) + parseInt(analysis.values[5][2]) + parseInt(analysis.values[6][2]) + parseInt(analysis.values[7][2]) + parseInt(analysis.values[8][2]) + parseInt(analysis.values[9][2]);
           let listvalues = [(parseInt(analysis.values[2][2])/total)*100, (parseInt(analysis.values[3][2])/total)*100, (parseInt(analysis.values[4][2])/total)*100,(parseInt(analysis.values[5][2])/total)*100,(parseInt(analysis.values[6][2])/total)*100,(parseInt(analysis.values[7][2])/total)*100,(parseInt(analysis.values[8][2])/total)*100,(parseInt(analysis.values[9][2])/total)*100];
           let pieData = [];
@@ -98,8 +100,18 @@
           let sumratingforum1 = 0, sumratingforum2 = 0, sumratingforum3 = 0, sumratingforum4 = 0, sumratingforum5 = 0;
           let sumratingcourse1 = 0, sumratingcourse2 = 0, sumratingcourse3 = 0, sumratingcourse4 = 0, sumratingcourse5 = 0, sumratingcourse6 = 0, sumratingcourse7 = 0, sumratingcourse8 = 0, sumratingcourse9 = 0, sumratingcourse10 = 0;
           let count18 = 0, count23 = 0, count28 = 0, count33 = 0, count38 = 0, count43 = 0, count48 = 0, count53 = 0;
+          let countries = [];
+          let countcountry = [];
 
           for(let i in responses.values){
+
+            if(countries.includes(responses.values[i][8])){
+              let index = countries.indexOf(responses.values[i][8]);
+              countcountry[index]++;
+            }else{
+              countries.push(responses.values[i][8]);
+              countcountry[countries.length - 1] = 1;
+            }
             // slack rating
             if(responses.values[i][6] == "1"){
               sumratingslack1++;
@@ -192,6 +204,8 @@
             }
           // get sum of responses by age
         }
+        console.log(countries);
+        console.log(countcountry);
 
         let tsumslack = [sumslackage18, sumslackage23, sumslackage28, sumslackage33, sumslackage38, sumslackage43, sumslackage48, sumslackage53];
         let tsumforum = [forumslackage18, forumslackage23, forumslackage28, forumslackage33, forumslackage38, forumslackage43, forumslackage48, forumslackage53];
@@ -291,9 +305,30 @@
                               </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               <i class="fa fa-square" style="color:rgba(48, 164, 255, 0.75)"></i><span> Course Completion</span>
                               </div>`);
-        let countslack = [0, sumratingslack1, sumratingslack2, sumratingslack3, sumratingslack4, sumratingslack5];
-        let countforum = [0, sumratingforum1, sumratingforum2, sumratingforum3, sumratingforum4, sumratingforum5];
-        let countcourse = [0, sumratingcourse1+sumratingcourse2, sumratingcourse3+sumratingcourse4, sumratingcourse5+sumratingcourse6, sumratingcourse7+sumratingcourse8, sumratingcourse9+sumratingcourse10];
+        let countslack = [
+          0, 
+          sumratingslack1, 
+          sumratingslack2, 
+          sumratingslack3, 
+          sumratingslack4, 
+          sumratingslack5
+        ];
+        let countforum = [
+          0, 
+          sumratingforum1, 
+          sumratingforum2, 
+          sumratingforum3, 
+          sumratingforum4, 
+          sumratingforum5
+        ];
+        let countcourse = [
+          0, 
+          sumratingcourse1+sumratingcourse2, 
+          sumratingcourse3+sumratingcourse4, 
+          sumratingcourse5+sumratingcourse6, 
+          sumratingcourse7+sumratingcourse8, 
+          sumratingcourse9+sumratingcourse10
+          ];
 
 let ratinglineChartData = {
           labels : ["0%","20%","40%","60%","80%","100%"],
@@ -384,6 +419,31 @@ let ratinglineChartData = {
                               </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               <span> <strong>COURSE:</strong> `+totalcourse+`%</span>
                               </div>`);
+
+        // Countries Pie-Chart
+        let listvalues = [];
+        let pieData = [];
+          for(let i in countcountry){
+            let color = getRandomColor();
+              if(i!=0){
+                let option = {
+                value: Math.round((parseInt(countcountry[i])/countresponses)*100),
+                color:color,
+                highlight: color,
+                label: countries[i]
+              }
+              pieData.push(option);
+              $("#keys2").append(`<div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <i class="fa fa-square" style="color:`+color+`"></i><span> `+countries[i]+`</span>
+                              </div>`);
+              }
+          }
+          
+          let chart6 = document.getElementById("pie-chart2").getContext("2d");
+            window.myPie = new Chart(chart6).Pie(pieData, {
+            responsive: true,
+            segmentShowStroke: true,
+         });
       }
     }
       xhttp.open("GET", url, true);
