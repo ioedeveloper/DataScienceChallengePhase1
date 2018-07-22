@@ -148,37 +148,37 @@
             }
 
             if(responses.values[i][9] == "18 - 22 years"){
-              sumslackage18 += parseInt(responses.values[i][6]);
-              forumslackage18 += parseInt(responses.values[i][5]);
-              courseslackage18 += parseInt(responses.values[i][4]);
+              sumslackage18 += parseInt(responses.values[i][6]) * (100/5);
+              forumslackage18 += parseInt(responses.values[i][5]) * (100/5);
+              courseslackage18 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "23 - 27 years"){
-              sumslackage23 += parseInt(responses.values[i][6]);
-              forumslackage23 += parseInt(responses.values[i][5]);
-              courseslackage23 += parseInt(responses.values[i][4]);
+              sumslackage23 += parseInt(responses.values[i][6]) * (100/5);
+              forumslackage23 += parseInt(responses.values[i][5]) * (100/5);
+              courseslackage23 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "28 - 32 years"){
-              sumslackage28 += parseInt(responses.values[i][6]);
-              forumslackage28 += parseInt(responses.values[i][5]);
-              courseslackage28 += parseInt(responses.values[i][4]);
+              sumslackage28 += parseInt(responses.values[i][6]) * (100/5);
+              forumslackage28 += parseInt(responses.values[i][5]) * (100/5);
+              courseslackage28 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "33 - 37 years"){
-              sumslackage33 += parseInt(responses.values[i][6]);
-              forumslackage33 += parseInt(responses.values[i][5]);
-              courseslackage33 += parseInt(responses.values[i][4]);
+              sumslackage33 += parseInt(responses.values[i][6]) * (100/5);
+              forumslackage33 += parseInt(responses.values[i][5]) * (100/5);
+              courseslackage33 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "38 - 42 years"){
-              sumslackage38 += parseInt(responses.values[i][6]);
-              forumslackage38 += parseInt(responses.values[i][5]);
-              courseslackage38 += parseInt(responses.values[i][4]);
+              sumslackage38 += parseInt(responses.values[i][6]) * (100/5);
+              forumslackage38 += parseInt(responses.values[i][5]) * (100/5);
+              courseslackage38 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "43 - 47 years"){
-              sumslackage43 += parseInt(responses.values[i][6]);
-              forumslackage43 += parseInt(responses.values[i][5]);
-              courseslackage43 += parseInt(responses.values[i][4]);
+              sumslackage43 += parseInt(responses.values[i][6]) * (100/5);
+              forumslackage43 += parseInt(responses.values[i][5]) * (100/5);
+              courseslackage43 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "48 - 52 years"){
-              sumslackage48 += parseInt(responses.values[i][6]);
-              forumslackage48 += parseInt(responses.values[i][5]);
-              courseslackage48 += parseInt(responses.values[i][4]);
+              sumslackage48 += parseInt(responses.values[i][6]) * (100/5);
+              forumslackage48 += parseInt(responses.values[i][5]) * (100/5);
+              courseslackage48 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "53 years - above"){
-              sumslackage53 += parseInt(responses.values[i][6]);
-              forumslackage53 += parseInt(responses.values[i][5]);
-              courseslackage53 += parseInt(responses.values[i][4]);
+              sumslackage53 += parseInt(responses.values[i][6]) * (100/5);
+              forumslackage53 += parseInt(responses.values[i][5]) * (100/5);
+              courseslackage53 += parseInt(responses.values[i][4]) * (100/10);
             }
           // get sum of responses by age
         }
@@ -294,8 +294,11 @@ let ratinglineChartData = {
                               </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               <i class="fa fa-square" style="color:rgba(48, 164, 255, 0.75)"></i><span> Course Completion</span>
                               </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
-                              <span> x-axis: Ratings</span><span> y-axis: Frequency</span>
+                              <span> X-axis: ratings</span> 
+                              </div><div style="padding-right: 10px; margin-top: 10px padding-bottom:10px;">
+                              <span> Y-axis: frequency</span>
                               </div>`);
+      
       var radarData = {
 	    labels: ["Slack", "Forum", "Course Completion"],
         datasets: [
@@ -310,13 +313,17 @@ let ratinglineChartData = {
               data: [totalslack, totalforum, totalcourse]
             }
           ]
-        };
+          };
         var chart5 = document.getElementById("radar-chart").getContext("2d");
-        window.myRadarChart = new Chart(chart5).Radar(radarData, {
-        responsive: true,
-        scaleLineColor: "rgba(0,0,0,.05)",
-        angleLineColor: "rgba(0,0,0,.2)"
-      });
+          window.myRadarChart = new Chart(chart5).Radar(radarData, {
+          responsive: true,
+          scaleLineColor: "rgba(0,0,0,.05)",
+          angleLineColor: "rgba(0,0,0,.2)"
+          },
+          {
+            showTooltips:true
+          });
+          
       }
     }
       xhttp.open("GET", url, true);
