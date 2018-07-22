@@ -97,6 +97,7 @@
           let sumratingslack1 = 0, sumratingslack2 = 0, sumratingslack3 = 0, sumratingslack4 = 0, sumratingslack5 = 0;
           let sumratingforum1 = 0, sumratingforum2 = 0, sumratingforum3 = 0, sumratingforum4 = 0, sumratingforum5 = 0;
           let sumratingcourse1 = 0, sumratingcourse2 = 0, sumratingcourse3 = 0, sumratingcourse4 = 0, sumratingcourse5 = 0, sumratingcourse6 = 0, sumratingcourse7 = 0, sumratingcourse8 = 0, sumratingcourse9 = 0, sumratingcourse10 = 0;
+          let count18 = 0, count23 = 0, count28 = 0, count33 = 0, count38 = 0, count43 = 0, count48 = 0, count53 = 0;
 
           for(let i in responses.values){
             // slack rating
@@ -149,51 +150,62 @@
             }
 
             if(responses.values[i][9] == "18 - 22 years"){
+              count18++;
               sumslackage18 += parseInt(responses.values[i][6]) * (100/5);
               forumslackage18 += parseInt(responses.values[i][5]) * (100/5);
               courseslackage18 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "23 - 27 years"){
+              count23++;
               sumslackage23 += parseInt(responses.values[i][6]) * (100/5);
               forumslackage23 += parseInt(responses.values[i][5]) * (100/5);
               courseslackage23 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "28 - 32 years"){
+              count28++;
               sumslackage28 += parseInt(responses.values[i][6]) * (100/5);
               forumslackage28 += parseInt(responses.values[i][5]) * (100/5);
               courseslackage28 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "33 - 37 years"){
+              count33++;
               sumslackage33 += parseInt(responses.values[i][6]) * (100/5);
               forumslackage33 += parseInt(responses.values[i][5]) * (100/5);
               courseslackage33 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "38 - 42 years"){
+              count38++;
               sumslackage38 += parseInt(responses.values[i][6]) * (100/5);
               forumslackage38 += parseInt(responses.values[i][5]) * (100/5);
               courseslackage38 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "43 - 47 years"){
+              count43++;
               sumslackage43 += parseInt(responses.values[i][6]) * (100/5);
               forumslackage43 += parseInt(responses.values[i][5]) * (100/5);
               courseslackage43 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "48 - 52 years"){
+              count48++;
               sumslackage48 += parseInt(responses.values[i][6]) * (100/5);
               forumslackage48 += parseInt(responses.values[i][5]) * (100/5);
               courseslackage48 += parseInt(responses.values[i][4]) * (100/10);
             }else if(responses.values[i][9] == "53 years - above"){
+              count53++;
               sumslackage53 += parseInt(responses.values[i][6]) * (100/5);
               forumslackage53 += parseInt(responses.values[i][5]) * (100/5);
               courseslackage53 += parseInt(responses.values[i][4]) * (100/10);
             }
           // get sum of responses by age
         }
-        let sumslack = [sumslackage18, sumslackage23, sumslackage28, sumslackage33, sumslackage38, sumslackage43, sumslackage48, sumslackage53];
-        let sumforum = [forumslackage18, forumslackage23, forumslackage28, forumslackage33, forumslackage38, forumslackage43, forumslackage48, forumslackage53];
-        let sumcourse = [courseslackage18, courseslackage23, courseslackage28, courseslackage33, courseslackage38, courseslackage43, courseslackage48, courseslackage53];
-        
-        totalslack = sumslack.reduce((a, b) => a + b, 0);
+        let sumslack = [Math.round(((sumslackage18/count18) + 0.00001) * 100) / 100, Math.round(((sumslackage23/count23) + 0.00001) * 100) / 100, Math.round(((sumslackage28/count28) + 0.00001) * 100) / 100, Math.round(((sumslackage33/count33) + 0.00001) * 100) / 100, Math.round(((sumslackage38/count38) + 0.00001) * 100) / 100, Math.round(((sumslackage43/count43) + 0.00001) * 100) / 100, Math.round(((sumslackage48/count48) + 0.00001) * 100) / 100, Math.round(((sumslackage53/count53) + 0.00001) * 100) / 100];
+        let sumforum = [Math.round(((forumslackage18/count18) + 0.00001) * 100) / 100, Math.round(((forumslackage23/count23) + 0.00001) * 100) / 100, Math.round(((forumslackage28/count28) + 0.00001) * 100) / 100, Math.round(((forumslackage33/count33) + 0.00001) * 100) / 100, Math.round(((forumslackage38/count38) + 0.00001) * 100) / 100, Math.round(((forumslackage43/count43) + 0.00001) * 100) / 100, Math.round(((forumslackage48/count48) + 0.00001) * 100) / 100, Math.round(((forumslackage53/count53) + 0.00001) * 100) / 100];
+        let sumcourse = [Math.round(((courseslackage18/count18) + 0.00001) * 100) / 100, Math.round(((courseslackage23/count23) + 0.00001) * 100) / 100, Math.round(((courseslackage28/count28) + 0.00001) * 100) / 100, Math.round(((courseslackage33/count33) + 0.00001) * 100) / 100, Math.round(((courseslackage38/count38) + 0.00001) * 100) / 100, Math.round(((courseslackage43/count43) + 0.00001) * 100) / 100, Math.round(((courseslackage48/count48) + 0.00001) * 100) / 100, Math.round(((courseslackage53/count53) + 0.00001) * 100) / 100];
+
+        let tsumslack = [sumslackage18, sumslackage23, sumslackage28, sumslackage33, sumslackage38, sumslackage43, sumslackage48, sumslackage53];
+        let tsumforum = [forumslackage18, forumslackage23, forumslackage28, forumslackage33, forumslackage38, forumslackage43, forumslackage48, forumslackage53];
+        let tsumcourse = [courseslackage18, courseslackage23, courseslackage28, courseslackage33, courseslackage38, courseslackage43, courseslackage48, courseslackage53];
+        totalslack = tsumslack.reduce((a, b) => a + b, 0);
         totalslack = totalslack/countresponses;
         totalslack = Math.round((totalslack + 0.00001) * 100) / 100
-        totalforum = sumforum.reduce((a, b) => a + b, 0);
+        totalforum = tsumforum.reduce((a, b) => a + b, 0);
         totalforum = totalforum/countresponses;
         totalforum = Math.round((totalforum + 0.00001) * 100) / 100
-        totalcourse = sumcourse.reduce((a, b) => a + b, 0);
+        totalcourse = tsumcourse.reduce((a, b) => a + b, 0);
         totalcourse = totalcourse/countresponses;
         totalcourse = Math.round((totalcourse + 0.00001) * 100) / 100
 
@@ -247,12 +259,12 @@
                               </div><div style="display:inline-block; padding-right: 10px; margin-top: 10px padding-bottom:10px;">
                               <i class="fa fa-square" style="color:rgba(48, 164, 255, 0.75)"></i><span> Course Completion</span>
                               </div>`);
-        let countslack = [sumratingslack1, sumratingslack2, sumratingslack3, sumratingslack4, sumratingslack5];
-        let countforum = [sumratingforum1, sumratingforum2, sumratingforum3, sumratingforum4, sumratingforum5];
-        let countcourse = [sumratingcourse1, sumratingcourse2, sumratingcourse3, sumratingcourse4, sumratingcourse5, sumratingcourse6, sumratingcourse7, sumratingcourse8, sumratingcourse9, sumratingcourse10];
+        let countslack = [0, sumratingslack1, sumratingslack2, sumratingslack3, sumratingslack4, sumratingslack5];
+        let countforum = [0, sumratingforum1, sumratingforum2, sumratingforum3, sumratingforum4, sumratingforum5];
+        let countcourse = [0, sumratingcourse1, sumratingcourse2, sumratingcourse3, sumratingcourse4, sumratingcourse5, sumratingcourse6, sumratingcourse7, sumratingcourse8, sumratingcourse9, sumratingcourse10];
 
 let ratinglineChartData = {
-          labels : ["1","2","3","4","5","6","7","8","9","10"],
+          labels : ["0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"],
           datasets : [
             {
               label: "Slack",
