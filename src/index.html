@@ -42,7 +42,7 @@
     }
 
   window.onload = function () {
-
+    var countresponses = 0;
     //Make ajax request to fetch analyzed data.
     var xhttp = new XMLHttpRequest();
       var url = "https://sheets.googleapis.com/v4/spreadsheets/1lq6AcmAbkOWidxiN_9gb1LdGAczeOKjbU_r3QpArbu8/values/Analysis?key=AIzaSyDBKRDMfrBz9L4S0V-AIKDlCWhK7mIEHV0";
@@ -51,7 +51,8 @@
         if (this.readyState == 4 && this.status == 200) {
           let analysis = JSON.parse(this.responseText);
           // Compute and display data
-          $("#countresponses").html(analysis.values[0][2]);
+          countresponses = analysis.values[0][2];
+          $("#countresponses").html(countresponses);
           $("#countcountries").html(analysis.values[1][2]);
           let total = parseInt(analysis.values[2][2]) + parseInt(analysis.values[3][2]) + parseInt(analysis.values[4][2]) + parseInt(analysis.values[5][2]) + parseInt(analysis.values[6][2]) + parseInt(analysis.values[7][2]) + parseInt(analysis.values[8][2]) + parseInt(analysis.values[9][2]);
           let listvalues = [(parseInt(analysis.values[2][2])/total)*100, (parseInt(analysis.values[3][2])/total)*100, (parseInt(analysis.values[4][2])/total)*100,(parseInt(analysis.values[5][2])/total)*100,(parseInt(analysis.values[6][2])/total)*100,(parseInt(analysis.values[7][2])/total)*100,(parseInt(analysis.values[8][2])/total)*100,(parseInt(analysis.values[9][2])/total)*100];
@@ -74,8 +75,8 @@
           let chart4 = document.getElementById("pie-chart").getContext("2d");
             window.myPie = new Chart(chart4).Pie(pieData, {
             responsive: true,
-            segmentShowStroke: true
-          });
+            segmentShowStroke: true,
+         });
         }
       };
       xhttp.open("GET", url, true);
@@ -187,8 +188,11 @@
         let sumcourse = [courseslackage18, courseslackage23, courseslackage28, courseslackage33, courseslackage38, courseslackage43, courseslackage48, courseslackage53];
         
         totalslack = sumslack.reduce((a, b) => a + b, 0);
+        totalslack = totalslack/countresponses;
         totalforum = sumforum.reduce((a, b) => a + b, 0);
+        totalforum = totalforum/countresponses;
         totalcourse = sumcourse.reduce((a, b) => a + b, 0);
+        totalcourse = totalcourse/countresponses;
 
         let lineChartData = {
           labels : ["18-22 yrs","23-27 yrs","28-32 yrs","33-37 yrs","38-42 yrs","43-47 yrs","48-52 yrs","53-above yrs"],
@@ -318,10 +322,11 @@ let ratinglineChartData = {
           window.myRadarChart = new Chart(chart5).Radar(radarData, {
           responsive: true,
           scaleLineColor: "rgba(0,0,0,.05)",
-          angleLineColor: "rgba(0,0,0,.2)"
+          angleLineColor: "rgba(0,0,0,.2)",
+          tooltips:{
+            enabled:true
           },
-          {
-            showTooltips:true
+          showTooltips:true
           });
           
       }
